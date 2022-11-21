@@ -94,3 +94,17 @@ func BenchmarkStartGreeterDoe(b *testing.B) {
 		StartGreeter("John")
 	}
 }
+
+func BenchmarkStartGreeter(b *testing.B) {
+	b.Run("John", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			StartGreeter("John")
+		}
+	})
+
+	b.Run("Doe", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			StartGreeter("Doe")
+		}
+	})
+}

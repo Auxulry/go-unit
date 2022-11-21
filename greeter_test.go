@@ -81,3 +81,16 @@ func TestTableStartGreeter(t *testing.T) {
 		})
 	}
 }
+
+// Benchmark
+func BenchmarkStartGreeterJohn(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		StartGreeter("John")
+	}
+}
+
+func BenchmarkStartGreeterDoe(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		StartGreeter("John")
+	}
+}

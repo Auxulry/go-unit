@@ -54,3 +54,30 @@ func TestSubTest(t *testing.T) {
 		require.Equal(t, "Hello Doe", result, "Result must be 'Hello Doe'")
 	})
 }
+
+// Test Table
+func TestTableStartGreeter(t *testing.T) {
+	tests := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{
+			name:     "StartGreeter(John)",
+			request:  "John",
+			expected: "Hello John",
+		},
+		{
+			name:     "StartGreeter(Doe)",
+			request:  "Doe",
+			expected: "Hello Doe",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := StartGreeter(test.request)
+			require.Equal(t, test.expected, result)
+		})
+	}
+}

@@ -108,3 +108,27 @@ func BenchmarkStartGreeter(b *testing.B) {
 		}
 	})
 }
+
+func BenchmarkStartGreeterTable(b *testing.B) {
+	benchmarks := []struct {
+		name    string
+		request string
+	}{
+		{
+			name:    "StartGreeter(John)",
+			request: "John",
+		},
+		{
+			name:    "StartGreeter(Doe)",
+			request: "Doe",
+		},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				StartGreeter(benchmark.request)
+			}
+		})
+	}
+}
